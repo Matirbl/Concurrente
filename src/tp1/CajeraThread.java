@@ -49,7 +49,7 @@ public class CajeraThread extends Thread {
                     + (System.currentTimeMillis() - this.initialTime) / 1000
                     + "seg");
         }
-        System.out.println("La cajera" + this.nombre + "HA TERMINADO DE PROCESAR" + this.cliente.getNombre() + " EN EL TIEMPO: " + (System.currentTimeMillis() - this.initialTime) / 1000 + "seg");
+        System.out.println("La cajera" + this.nombre + "HA TERMINADO DE PROCESAR " + this.cliente.getNombre() + " EN EL TIEMPO: " + (System.currentTimeMillis() - this.initialTime) / 1000 + "seg");
     }
 
     private void esperarXsegundos(int delay) {

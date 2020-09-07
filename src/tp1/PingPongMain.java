@@ -21,8 +21,8 @@ public class PingPongMain {
         t3.start();
         t4.start();
 
-        for (int i = 0; i < 10000; i++) {
-            System.err.println("soy main");
+        for (int i = 0; i < 1000; i++) {
+            System.out.println("soy main");
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
