@@ -1,0 +1,5 @@
+Al ejecutar el varias veces el programa sin sincronizar los metodos,
+los resultados obtenidos fueron valores antiguos del recurso compartido, dando resultados
+como 8 despues de sumar y 6 despues de multiplicar.
+Luego de sincronizar con semaforos, los resultados fueron 7 y 8 
+(Siempre entra primero uno de los metodos y el otro no se ejecuta hasta que terminaba el que entro primero).

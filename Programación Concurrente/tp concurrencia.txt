@@ -1,0 +1,10 @@
+2.a) Se ejecuta uno de los dos clientes. Imprime el nombre y antes de ejecutar recurso.uso,
+ el otro cliente toma el cpu e imprime su nombre.
+b)Imprime el nombre del Thread que se está ejecutando.
+3.a)Siempre imprime "en el main" y luego "en la pila"
+  b)Se puede forzar durmiendo el main 100 milisegundos, para que al ejecutar el start termine de 
+   ejecutar todos sus metodos, y luego vuelva e imprima "en el main"
+4)a) Empieza imprimiendo ping pong y termina imprimiendo solo ping, porque ping tiene mayor tiempo de delay.
+  b) El mensaje en el main queda intercalado entre los ping y los pong.
+  e)en el inciso d, se va a dormir la iteracion que escribe "soy main" y va a dejar que los ping y pong se sigan ejecutando.
+6b)Tardara porque la cajera no es una hilo.
