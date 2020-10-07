@@ -19,20 +19,19 @@ public class Hamster implements Runnable {
 
     public void run() {
         while (true) {
-            
-            switch (Aleatorio.intAleatorio(1, 4)) {
-                case 1:
-                    cage.hamarcarse(name);
-                    break;
-                case 2:
-                    cage.comer(name);
-                    break;
-                case 3:
-                    cage.irAlaRueda(name);
-                    break;
-                default:
-                    break;
-            }
+
+            // switch (Aleatorio.intAleatorio(1, 4)) {
+            //  case 1:
+            cage.hamarcarse(name);
+//                    break;
+            //case 2:
+            cage.comer(name);
+//                    break;
+            //case 3:
+            cage.irAlaRueda(name);
+            //break;
+            // default:
+//                    break;
         }
     }
 }

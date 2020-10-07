@@ -15,9 +15,9 @@ public class mainHamster {
 
         Jaula j = new Jaula();
         
-        Thread h1 = new Thread(new Hamster("mati", j));
-        Thread h2 = new Thread(new Hamster("guido", j));
-        Thread h3 = new Thread(new Hamster("santi", j));
+        Thread h1 = new Thread(new Hamster("Mati", j));
+        Thread h2 = new Thread(new Hamster("Carla", j));
+        Thread h3 = new Thread(new Hamster("Peluson", j));
 
         h1.start();
         h2.start();

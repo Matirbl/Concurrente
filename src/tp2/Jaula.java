@@ -29,13 +29,13 @@ public class Jaula {
             if (comidaDisponible) {
                 comidaDisponible = false;
                 comida.unlock();
-                System.out.println("El Hamster " + nom + " empieza a comer");
+                System.out.println("\u001B[32m El Hamster " + nom + " empieza a comer");
                 Thread.sleep(1000);
-                System.out.println("El Hamster " + nom + " termina de comer");
+                System.out.println("\u001B[33m El Hamster " + nom + " termina de comer");
                 comida.lock();
                 comidaDisponible = true;
             } else {
-                System.out.println("esperando" + nom);
+                System.out.println("\u001B[31m" + nom + "  está esperando para comer");
             }
             comida.unlock();
         } catch (Exception e) {
@@ -48,11 +48,14 @@ public class Jaula {
             if (hamacaDisponible) {
                 hamacaDisponible = false;
                 hamaca.unlock();
-                System.out.println("El Hamster " + nom + " empieza a hamacarse");
-                Thread.sleep(4000);
-                System.out.println("El Hamster " + nom + " termina de hamacarse");
+                System.out.println("\u001B[32m El Hamster " + nom + " empieza a hamacarse");
+                Thread.sleep(1000);
+                System.out.println("\u001B[33m El Hamster " + nom + " termina de hamacarse");
                 hamaca.lock();
                 hamacaDisponible = true;
+            } else {
+
+                System.out.println("\u001B[31m" + nom + "  está esperando para hamacarse");
             }
             hamaca.unlock();
         } catch (Exception e) {
@@ -66,11 +69,13 @@ public class Jaula {
             if (ruedaDisponible) {
                 ruedaDisponible = false;
                 rueda.unlock();
-                System.out.println("El Hamster " + nom + " empieza a correr");
-                Thread.sleep(2000);
-                System.out.println("El Hamster " + nom + " termina de correr");
+                System.out.println("\u001B[32m El Hamster " + nom + " empieza a correr");
+                Thread.sleep(1000);
+                System.out.println("\u001B[33m El Hamster " + nom + " termina de correr");
                 rueda.lock();
                 ruedaDisponible = true;
+            } else {
+                System.out.println("\u001B[31m" + nom + "  está esperando la rueda");
             }
             rueda.unlock();
         } catch (Exception e) {

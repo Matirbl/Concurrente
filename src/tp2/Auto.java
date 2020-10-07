@@ -99,8 +99,5 @@ public class Auto implements Runnable {
         cuentaKm = 0;
     }
 
-    public void andar() {
-
-    }
-
+ 
 }
