@@ -9,28 +9,32 @@ import java.util.concurrent.Semaphore;
 
 public class Puente {
 
-    private Semaphore mutex, cruzaNorte, cruzaSur;
-    private int cruzando, esperando, yaCruzaron, cantMax;
+    private Semaphore mutex, norte, sur;
+    private int esperandoNorte, esperandoSur, cantMax, yaCruzaron, cruzando;
     private boolean sentido;
 
     public Puente() {
-        mutex = new Semaphore(1);
-        sentido = true;
-        esperando = 0;
-        cruzando = 0;
-        yaCruzaron = 0;
         cantMax = 10;
+        mutex = new Semaphore(1);
+        norte = new Semaphore(cantMax);
+        sur = new Semaphore(cantMax);
+        esperandoNorte = 0;
+        esperandoSur = 0;
+        sentido = true;
+        cruzando = 0;
     }
 
     public void cruzarNorte(String patente) throws InterruptedException {
         mutex.acquire();
-
-        if (yaCruzaron <= 10 && !sentido || !sentido && esperando == 0) {
-            System.out.println("El auto con patente " + patente + " pudo cruzar desde norte");
+        if (norte.tryAcquire() && !sentido) {
+            System.out.println("El auto con patente " + patente + " entra desde norte " + " esperan " + esperandoSur + " autos de sur");
             cruzando++;
+            if (esperandoNorte > 0) {
+                esperandoNorte--;
+            }
         } else {
-            System.out.println("El auto con patente " + patente + " espera para cruzar desde norte");
-            esperando++;
+            System.out.println("El auto con patente " + patente + " no puede cruzar espera para cruzar desde norte");
+            esperandoNorte++;
         }
         mutex.release();
     }
@@ -42,22 +46,30 @@ public class Puente {
         System.out.println("El auto con patente " + patente + " sale del puente ");
 
         if (yaCruzaron == cantMax) {
-            sentido = !sentido;
+            System.out.println("Cruzaron " + cantMax + " desde norte y cambia sentido");
             yaCruzaron = 0;
-            System.out.println("SE CAMBIA SENTIDO");
+            sentido = !sentido;
         }
         mutex.release();
+
+    }
+
+    public void cruzando(String patente) throws InterruptedException {
+        System.out.println("El auto con patente " + patente + " está cruzando");
+        Thread.sleep(2000);
     }
 
     public void cruzarSur(String patente) throws InterruptedException {
         mutex.acquire();
-
-        if (yaCruzaron <= 10 && sentido || sentido && esperando == 0) {
-            System.out.println("El auto con patente " + patente + " pudo cruzar desde sur");
+        if (sur.tryAcquire() && !sentido) {
+            System.out.println("El auto con patente " + patente + " entra desde norte " + " esperan " + esperandoNorte + " autos de norte");
             cruzando++;
+            if (esperandoSur > 0) {
+                esperandoSur--;
+            }
         } else {
             System.out.println("El auto con patente " + patente + " espera para cruzar desde sur");
-            esperando++;
+            esperandoNorte++;
         }
         mutex.release();
     }
@@ -69,11 +81,12 @@ public class Puente {
         System.out.println("El auto con patente " + patente + " sale del puente ");
 
         if (yaCruzaron == cantMax) {
-            sentido = !sentido;
+            System.out.println("Cruzaron " + cantMax + " desde sur");
             yaCruzaron = 0;
-            System.out.println("SE CAMBIA SENTIDO");
+            sentido = !sentido;
         }
         mutex.release();
+
     }
 
 }
