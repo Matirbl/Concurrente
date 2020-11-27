@@ -1,0 +1,40 @@
+//ejerc 7
+package tpExcepciones;
+import java.io.*;
+public class Uno {
+
+    private static int metodo() throws Exception {
+
+        int valor = 0;
+        try {
+            valor = valor + 1;
+            valor = valor + Integer.parseInt("W");
+            valor = valor + 1;
+            System.out.println("Valor al final del try: " + valor);
+            throw new IOException();
+        }
+        catch (IOException e) {
+            valor = valor + Integer.parseInt("42");
+            System.out.println("Valor al final del catch: " + valor);
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            System.out.println("algo salio terriblemente mal");
+        }
+        finally {
+            valor = valor + 1;
+            System.out.println("Valor al final del finally: " + valor);
+        }
+        valor = valor + 1;
+        System.out.println("Valor antes del return: " + valor);
+        return valor;
+    }
+    public static void main(String[] args) {
+        try {
+            System.out.println(metodo());
+        } catch (Exception e) {
+            System.out.println("Excepcion en metodo()");
+            e.printStackTrace();
+        }
+    }
+
+}

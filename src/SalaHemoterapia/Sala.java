@@ -64,7 +64,6 @@ public class Sala {
             revistaSem.release();
         } else {
             System.out.println("El paciente " + i + " esta parado y mira la tv");
-
             camillas.acquire();
 
         }

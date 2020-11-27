@@ -12,7 +12,6 @@ package BarberoDormilon;
 public class Barberia {
 //hola, esta es una prueba
     int sillasDisponibles;
-
     int sillonOcupado;
 
     public Barberia() {

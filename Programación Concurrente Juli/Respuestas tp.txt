@@ -1,0 +1,4 @@
+a) Al probar la ejecución varias veces, el recurso compartido toma el
+valor 8 o el valor 7, dependiendo si primero suma o primero multiplica.
+b) Que dependiendo a que hilo entre primero se va a modificar de distinta
+ manera el valor del recurso compartido.
